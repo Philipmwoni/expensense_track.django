@@ -1,0 +1,35 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>track your expenses</title>
+    <link rel="stylesheet" href="{%  static 'home.css' %}" >
+
+</head>
+<body>
+    <div class="navbar">
+        <p>Track your expenses</p>
+        <div class="links">
+            <ul>
+                <li><a href="{% url 'create_expense'%}">Create Your expenses</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="back">
+        <table>
+              <tr>
+                <th>Expense</th>
+                <th>Date</th>
+              </tr>
+              <tr>
+                <td>{{Expenses.title}}</td>
+                <td>{{Expenses.date}}</td>
+              </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>

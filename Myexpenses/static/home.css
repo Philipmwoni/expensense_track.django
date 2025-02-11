@@ -1,0 +1,36 @@
+.navbar{
+    display: flex;
+    background-color: rgb(71, 71, 238);
+    height: 10vh;
+    border: 1px solid white;
+    margin: 0;
+
+
+}
+.links{
+    color: azure;
+    font-size: 20px;
+    position: relative;
+    left:120px;
+
+}
+ul{
+    list-style:none;
+    border: 1px solid white;
+    border-radius: 16px;
+    align-items: center;
+
+}
+li a{
+    list-style: none;
+    color: azure;
+}
+.back{
+    margin-top: 30px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100vh;
+}
