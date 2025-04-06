@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from .views import User_nameViewSet, SavingsCreateView, expense_list
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'reviews', User_nameViewSet)
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -10,5 +16,8 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('delete', views.delete, name='delete'),
+    path('api/expenses/<str:pk>/', expense_list, name='expense/api'),
+    path('savings/', SavingsCreateView.as_view(), name='savings'),
+    path('api/User_name/', include(router.urls)),
 
 ]

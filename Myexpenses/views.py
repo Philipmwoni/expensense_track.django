@@ -1,11 +1,32 @@
 from django.shortcuts import render, redirect
-from .models import Expenses, User_name
+from .models import Expenses, User_name, savings
 from .form import ExpenseForm
+from .serializers import ExpenseSerializer, savingsSerializer, User_nameSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import generics, viewsets
 import json
 
 
-# Create your views here.
+# API VIEWS
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def expense_list(request):
+    expenses = Expenses.objects.all()
+    serializer = ExpenseSerializer(expenses, many=True)
+    return Response(serializer.data)
 
+
+class SavingsCreateView(generics.ListAPIView):
+    queryset = savings.objects.all()
+    serializer_class = savingsSerializer
+
+
+class User_nameViewSet(viewsets.ModelViewSet):
+    queryset = User_name.objects.all()
+    serializer_class = User_nameSerializer
+
+
+# FORM'S VALIDATIONS
 def home(request):
     expenses = Expenses.objects.all()
     username = User_name.objects.all()
